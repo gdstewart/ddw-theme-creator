@@ -1,0 +1,226 @@
+:root {
+    background-color: #001A33;
+    color: #DDD;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+html {
+    background-color: #001A33;
+}
+
+body {
+    margin: 0;
+}
+
+.loading-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.logo-image {
+    width: 7.5vw;
+    height: 7.5vw;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+}
+
+.options {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 0;
+    list-style: none;
+}
+
+.option {
+    border: 2px solid #DDD;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.option div {
+    display: flex;
+    align-items: center;
+}
+
+.option-icon {
+    font-size: 2rem;
+    width: 2rem;
+}
+
+.option-image-big {
+    height: 2rem;
+    width: 2rem;
+}
+
+.option-image-small {
+    height: 1.75rem;
+    width: 1.75rem;
+}
+
+.option-text {
+    padding-left: 1rem;
+}
+
+.create {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 15vh;
+}
+
+.content-header-back-button {
+    font-size: 5rem;
+    width: 15vw;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
+}
+
+.content-header-text {
+    font-size: 1.5rem;
+}
+
+.content {
+    width: calc(100% - 40vw);
+    padding-left: 20vw;
+    padding-right: 20vw;
+}
+
+.content-info {
+    font-size: 1.1rem;
+    padding-bottom: 2rem;
+}
+
+.category-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.category-item {
+    width: calc(100% - 30vw);   
+}
+
+.category-header-text {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.dropzone-caption-icon {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.dropzone-thumbnail-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.dropzone-thumbnail {
+    display: inline-flex;
+    border-radius: 2;
+    border: 1px solid #eaeaea;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    width: 100px;
+    height: 100px;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.dropzone-thumbnail-inner {
+    display: flex;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.dropzone-thumbnail-image {
+    display: block;
+    width: auto;
+    height: 100%;
+}
+
+.content-submit {
+    font: inherit;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+}
+
+footer {
+    position: fixed;
+    width: calc(100% - 2rem);
+    bottom: 0;
+    padding: 1rem;
+    z-index: 1;
+    background-color: #001A33;
+}
+
+.footer-items {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-link {
+    font-size: 1.1rem;
+}
+
+.footer-link-text {
+    color: #DDD;
+}
+
+.fade-in {
+    animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+    0% {
+    	opacity: 0
+    }
+    100% {
+    	opacity: 1
+    }
+}
+
+.hover-fade {
+    transition: all .2s ease-out;
+}
+
+.hover-fade:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
