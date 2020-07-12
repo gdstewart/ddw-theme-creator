@@ -3,7 +3,6 @@ import { useDropzone } from "react-dropzone"
 import { IoIosCheckmarkCircle } from "react-icons/io"
 import { MdCancel, MdAdd } from "react-icons/md"
 import { FiSunrise, FiSun, FiSunset, FiMoon } from "react-icons/fi"
-import VirtualDraggableGrid from "react-virtual-draggable-grid"
 
 function StyledDropzone(props) {
     const baseStyle = {
