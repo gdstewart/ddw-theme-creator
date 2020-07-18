@@ -1,13 +1,13 @@
 import { GoArrowLeft } from "react-icons/go"
 import Link from "next/link"
 import { useRouter } from "next/router"
-import CreateThemeFromImageSet from "../utils/from-image-set"
-import CreateThemeFromSingleImage from "../utils/from-single-image"
-import ConvertHeicToDdw from "../utils/heic-to-ddw"
+import CreateThemeFromImageSet from "../components/from-image-set"
+import CreateThemeFromSingleImage from "../components/from-single-image"
+import ConvertHeicToDdw from "../components/heic-to-ddw"
 import { useEffect } from "react"
 import AppStore from "../stores/app"
 
-export default function Create() {
+function Create() {
     const router = useRouter()
     const query = router.query
 
@@ -18,10 +18,15 @@ export default function Create() {
     return (
         <div className="create fade-in">
             <div className="content-header">
-                <Link href="/">
-                    <GoArrowLeft className="content-header-back-button hover-fade" />
+                <Link href={"/"}>
+                    <div><GoArrowLeft className="content-header-back-button hover-fade" /></div>
                 </Link>
-                <div className="content-header-text">Create theme from set of images</div>
+                {
+                    query.option === "1" ? <div className="content-header-text">Create theme from set of images</div> :
+                        query.option === "2" ? <div className="content-header-text">Create theme from single image</div> :
+                            query.option === "3" ? <div className="content-header-text">Convert .heic file to .ddw file</div> :
+                                null
+                }
             </div>
             {
                 query.option === "1" ? <CreateThemeFromImageSet /> :
@@ -32,3 +37,5 @@ export default function Create() {
         </div>
     )
 }
+
+export default Create

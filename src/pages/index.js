@@ -1,10 +1,10 @@
-import { IoIosImage, IoIosImages, IoIosAppstore } from "react-icons/io"
+import { IoIosImage, IoIosImages } from "react-icons/io"
 import { GoArrowRight } from "react-icons/go"
 import Link from "next/link"
 import AppStore from "../stores/app"
 import { useEffect } from "react"
 
-export default function Home() {
+function Home() {
 	useEffect(() => {
 		AppStore.loading = false
 	})
@@ -22,6 +22,7 @@ export default function Home() {
 				<li className="option hover-fade">
 					<Link as={"/"} href={{ pathname: "/create", query: { option: 1 } }}>
 						<div onClick={() => {
+							AppStore.loadingMessage = "Loading..."
 							AppStore.loading = true
 						}}>
 							<IoIosImages className="option-icon" />
@@ -34,6 +35,7 @@ export default function Home() {
 				<li className="option hover-fade">
 					<Link as={"/"} href={{ pathname: "/create", query: { option: 2 } }}>
 						<div onClick={() => {
+							AppStore.loadingMessage = "Loading..."
 							AppStore.loading = true
 						}}>
 							<IoIosImage className="option-icon" />
@@ -46,6 +48,7 @@ export default function Home() {
 				<li className="option hover-fade">
 					<Link as={"/"} href={{ pathname: "/create", query: { option: 3 } }}>
 						<div onClick={() => {
+							AppStore.loadingMessage = "Loading..."
 							AppStore.loading = true
 						}}>
 							<img className="option-image-big" src="/heicfile.png" />
@@ -59,3 +62,5 @@ export default function Home() {
 		</div>
 	)
 }
+
+export default Home
