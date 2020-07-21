@@ -16,11 +16,11 @@ const StyledDropzone = props => {
         borderStyle: "dashed",
         outline: "none",
         cursor: "pointer",
-        marginBottom: 8,
-        marginRight: 8,
+        marginRight: "1rem",
+        marginBottom: "0.5rem",
         width: 100,
         height: 100,
-        padding: 4,
+        padding: "0.5rem",
         boxSizing: "border-box"
     };
 
