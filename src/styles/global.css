@@ -74,17 +74,17 @@ body {
     align-items: center;
 }
 
-.option-icon {
+.option-icon, .content-header-icon {
     font-size: 2rem;
     width: 2rem;
 }
 
-.option-image-big {
+.option-image-big, .content-header-image-big {
     height: 2rem;
     width: 2rem;
 }
 
-.option-image-small {
+.option-image-small, .content-header-image-small {
     height: 1.75rem;
     width: 1.75rem;
 }
@@ -114,6 +114,7 @@ body {
 
 .content-header-text {
     font-size: 1.5rem;
+    padding-left: 1rem;
 }
 
 .content {
@@ -176,18 +177,17 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-bottom: 1rem;
+    padding-bottom: 0.5rem;
 }
 
 .dropzone-thumbnail {
     display: inline-flex;
     border-radius: 2;
-    border: 1px solid #eaeaea;
-    margin-bottom: 8px;
-    margin-right: 8px;
+    border: 2px solid #eaeaea;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
     width: 100px;
     height: 100px;
-    padding: 4px;
     box-sizing: border-box;
 }
 

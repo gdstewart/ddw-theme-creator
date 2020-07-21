@@ -45,6 +45,7 @@ function Home() {
 						</div>
 					</Link>
 				</li>
+				{/*
 				<li className="option hover-fade">
 					<Link as={"/"} href={{ pathname: "/create", query: { option: 3 } }}>
 						<div onClick={() => {
@@ -54,10 +55,11 @@ function Home() {
 							<img className="option-image-big" src="/heicfile.png" />
 							<GoArrowRight className="option-icon" />
 							<img className="option-image-small" src="/icon.png" />
-							<div className="option-text">Convert .heic file to .ddw theme</div>
+							<div className="option-text">Convert .heic file to .ddw file</div>
 						</div>
 					</Link>
 				</li>
+				*/}
 			</ul>
 		</div>
 	)

@@ -85,7 +85,7 @@ const CreateThemeFromImageSet = () => {
                     <div className="category-header-text"><FiSunrise />&nbsp;Sunrise images:</div>
                     <div className="dropzone-thumbnail-container">
                         {sunriseImages.map(file => (
-                            <div className="dropzone-thumbnail" key={file.name}>
+                            <div className="dropzone-thumbnail fade-in" key={file.name}>
                                 <div className="dropzone-thumbnail-inner">
                                     <img
                                         src={file.preview}
@@ -101,7 +101,7 @@ const CreateThemeFromImageSet = () => {
                     <div className="category-header-text"><FiSun />&nbsp;Day images:</div>
                     <div className="dropzone-thumbnail-container">
                         {dayImages.map(file => (
-                            <div className="dropzone-thumbnail" key={file.name}>
+                            <div className="dropzone-thumbnail fade-in" key={file.name}>
                                 <div className="dropzone-thumbnail-inner">
                                     <img
                                         src={file.preview}
@@ -117,7 +117,7 @@ const CreateThemeFromImageSet = () => {
                     <div className="category-header-text"><FiSunset />&nbsp;Sunset images:</div>
                     <div className="dropzone-thumbnail-container">
                         {sunsetImages.map(file => (
-                            <div className="dropzone-thumbnail" key={file.name}>
+                            <div className="dropzone-thumbnail fade-in" key={file.name}>
                                 <div className="dropzone-thumbnail-inner">
                                     <img
                                         src={file.preview}
@@ -133,7 +133,7 @@ const CreateThemeFromImageSet = () => {
                     <div className="category-header-text"><FiMoon />&nbsp;Night images:</div>
                     <div className="dropzone-thumbnail-container">
                         {nightImages.map(file => (
-                            <div className="dropzone-thumbnail" key={file.name}>
+                            <div className="dropzone-thumbnail fade-in" key={file.name}>
                                 <div className="dropzone-thumbnail-inner">
                                     <img
                                         src={file.preview}

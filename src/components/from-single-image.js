@@ -13,7 +13,6 @@ const CreateThemeFromSingleImage = () => {
     const [errorText, setErrorText] = useState("")
 
     const createImages = file => {
-        console.log(file)
         let brightness = 100
         for (let i = 1; i <= 8; i++) {
             let image = document.createElement("img")
@@ -74,12 +73,13 @@ const CreateThemeFromSingleImage = () => {
     return (
         <form name="form" className="content" onSubmit={createTheme}>
             <div className="content-block">
-                Upload an image and a theme will be created for you by modifying the brightness of the image. <br />
+                Drag your image in or click the "+" button to upload an image. <br />
+                A theme will be created for you by modifying the brightness of the image. <br />
                 Idea originally implemented by <a className="content-link-text hover-fade" href={"https://github.com/pchalamet"} target="_blank" rel="noopener noreferrer">@pchalamet</a>.
             </div>
             <div className="dropzone-thumbnail-container">
                 {modifiedImages.map(file => (
-                    <div className="dropzone-thumbnail" key={file.name}>
+                    <div className="dropzone-thumbnail fade-in" key={file.name}>
                         <div className="dropzone-thumbnail-inner">
                             <img
                                 src={file.preview}
