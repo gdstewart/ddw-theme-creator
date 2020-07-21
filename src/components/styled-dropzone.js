@@ -41,6 +41,7 @@ const StyledDropzone = props => {
         isDragReject
     } = useDropzone({
         accept: "image/*",
+        multiple: props.multiple ? true : false,
         onDrop: (acceptedFiles) => {
             props.onDrop(acceptedFiles.map(file => Object.assign(file, {
                 preview: URL.createObjectURL(file)
@@ -58,7 +59,7 @@ const StyledDropzone = props => {
     ])
 
     return (
-        <div className="dropzone hover-fade">
+        <div className="hover-fade">
             <div {...getRootProps({ style })}>
                 <input {...getInputProps()} />
                 {isDragAccept && (<IoIosCheckmarkCircle className="dropzone-caption-icon" />)}

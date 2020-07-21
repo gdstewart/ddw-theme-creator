@@ -127,10 +127,21 @@ body {
     padding-bottom: 1rem;
 }
 
+.content-link-text {
+    color: #DDD;
+}
+
 .content-text-field {
     font-family: inherit;
     font-size: 1.1rem;
     padding: 0.5rem;
+}
+
+.content-button {
+    font: inherit;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .category-grid {
@@ -152,6 +163,7 @@ body {
     display: flex;
     align-items: center;
     font-size: 1.1rem;
+    padding-bottom: 1rem;
 }
 
 .dropzone-caption-icon {
@@ -164,7 +176,6 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding-top: 1rem;
     padding-bottom: 1rem;
 }
 
@@ -184,6 +195,7 @@ body {
     display: flex;
     min-width: 0;
     overflow: hidden;
+    justify-content: center;
 }
 
 .dropzone-thumbnail-image {
@@ -192,18 +204,11 @@ body {
     height: 100%;
 }
 
-.content-submit {
-    font: inherit;
-    font-size: 1.1rem;
-    padding: 0.5rem;   
-}
-
 .spacer {
     height: 5rem;
 }
 
 .error-text {
-    padding-left: 0.5rem;
     color: #FF1744;
 }
 

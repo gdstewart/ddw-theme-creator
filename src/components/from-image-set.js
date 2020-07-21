@@ -19,15 +19,15 @@ const CreateThemeFromImageSet = () => {
     const createTheme = event => {
         event.preventDefault()
         let themeName = document.forms["form"]["theme-name"].value
-        if (themeName.length < 1) {
+        if (sunriseImages.length === 0 || dayImages.length === 0 || sunsetImages.length === 0 || nightImages.length === 0) {
+            setErrorFlag(" visible")
+            setErrorText("Please provide at least one image for each category.")
+        } else if (themeName.length < 1) {
             setErrorFlag(" visible")
             setErrorText("Please enter a theme name.")
         } else if (!themeName.match("^[a-zA-Z0-9_]*$")) {
             setErrorFlag(" visible")
             setErrorText("Please enter letters, numbers, or underscores only.")
-        } else if (sunriseImages.length === 0 || dayImages.length === 0 || sunsetImages.length === 0 || nightImages.length === 0) {
-            setErrorFlag(" visible")
-            setErrorText("Please provide at least one image for each category.")
         } else {
             setErrorFlag(" hidden")
             setErrorText("")
@@ -39,15 +39,11 @@ const CreateThemeFromImageSet = () => {
                 let file = new File([image], themeName + "_" + count++ + ".jpg", { type: "image/jpeg" })
                 zip.file(file.name, file)
             })
-            console.log(sunriseImages)
-            console.log(sunriseImageIndices)
             dayImages.forEach(image => {
                 dayImageIndices.push(count)
                 let file = new File([image], themeName + "_" + count++ + ".jpg", { type: "image/jpeg" })
                 zip.file(file.name, file)
             })
-            console.log(dayImages)
-            console.log(dayImageIndices)
             sunsetImages.forEach(image => {
                 sunsetImageIndices.push(count)
                 let file = new File([image], themeName + "_" + count++ + ".jpg", { type: "image/jpeg" })
@@ -72,7 +68,7 @@ const CreateThemeFromImageSet = () => {
             zip.generateAsync({ type: "blob" }).then(result => {
                 ThemeStore.themeData = result
                 ThemeStore.themeName = themeName
-                router.push("/result?text=Theme+created!", "/")
+                router.push("/result?text='" + themeName + "' theme+created!", "/")
             })
         }
     }
@@ -98,7 +94,7 @@ const CreateThemeFromImageSet = () => {
                                 </div>
                             </div>
                         ))}
-                        <StyledDropzone onDrop={(files) => setSunriseImages(sunriseImages.concat(files))} />
+                        <StyledDropzone multiple onDrop={(files) => setSunriseImages(sunriseImages => sunriseImages.concat(files))} />
                     </div>
                 </div>
                 <div className="category-item">
@@ -114,7 +110,7 @@ const CreateThemeFromImageSet = () => {
                                 </div>
                             </div>
                         ))}
-                        <StyledDropzone onDrop={(files) => setDayImages(dayImages.concat(files))} />
+                        <StyledDropzone multiple onDrop={(files) => setDayImages(dayImages => dayImages.concat(files))} />
                     </div>
                 </div>
                 <div className="category-item">
@@ -130,7 +126,7 @@ const CreateThemeFromImageSet = () => {
                                 </div>
                             </div>
                         ))}
-                        <StyledDropzone onDrop={(files) => setSunsetImages(sunsetImages.concat(files))} />
+                        <StyledDropzone multiple onDrop={(files) => setSunsetImages(sunsetImages => sunsetImages.concat(files))} />
                     </div>
                 </div>
                 <div className="category-item">
@@ -146,17 +142,16 @@ const CreateThemeFromImageSet = () => {
                                 </div>
                             </div>
                         ))}
-                        <StyledDropzone onDrop={(files) => setNightImages(nightImages.concat(files))} />
+                        <StyledDropzone multiple onDrop={(files) => setNightImages(nightImages => nightImages.concat(files))} />
                     </div>
                 </div>
             </div>
             <div className="content-block">
-                <label htmlFor="theme-name">Name of theme: </label>
-                <input type="text" id="theme-name" name="theme-name" className="content-text-field" />
+                <input type="text" id="theme-name" name="theme-name" className="content-text-field" placeholder="Name of theme" />
             </div>
             <div className="content-block row">
-                <input type="submit" value="Create .ddw file" className="content-submit" />
-                <div className={"error-text" + errorFlag}>{errorText}</div>
+                <input type="submit" value="Create .ddw file" className="content-button" />
+                <span className={"error-text" + errorFlag}>{errorText}</span>
             </div>
             <div className="spacer" />
         </form>
