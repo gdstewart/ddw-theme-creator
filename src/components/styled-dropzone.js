@@ -59,7 +59,7 @@ const StyledDropzone = props => {
     ])
 
     return (
-        <div className="hover-fade">
+        <div className="dropzone hover-fade">
             <div {...getRootProps({ style })}>
                 <input {...getInputProps()} />
                 {isDragAccept && (<IoIosCheckmarkCircle className="dropzone-caption-icon" />)}

@@ -77,13 +77,13 @@ const CreateThemeFromSingleImage = () => {
                 A theme will be created for you by modifying the brightness of the image. <br />
                 Idea originally implemented by <a className="content-link-text hover-fade" href={"https://github.com/pchalamet"} target="_blank" rel="noopener noreferrer">@pchalamet</a>.
             </div>
-            <div className="dropzone-thumbnail-container">
+            <div className="thumbnail-container">
                 {modifiedImages.map(file => (
-                    <div className="dropzone-thumbnail fade-in" key={file.name}>
-                        <div className="dropzone-thumbnail-inner">
+                    <div className="thumbnail" key={file.name}>
+                        <div className="thumbnail-inner">
                             <img
                                 src={file.preview}
-                                className="dropzone-thumbnail-image"
+                                className="thumbnail-image"
                             />
                         </div>
                     </div>
