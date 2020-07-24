@@ -17,7 +17,8 @@
 		"react-dom": "16.13.1",
 		"react-dropzone": "^11.0.1",
 		"react-icons": "^3.10.0",
-		"react-loader-spinner": "^3.1.14"
+		"react-loader-spinner": "^3.1.14",
+		"react-sortablejs": "^2.0.11"
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-decorators": "^7.10.4"
