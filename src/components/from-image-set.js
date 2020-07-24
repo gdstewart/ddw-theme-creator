@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { FiSunrise, FiSun, FiSunset, FiMoon } from "react-icons/fi"
-import JSZip, { forEach } from "jszip"
+import JSZip from "jszip"
 import StyledDropzone from "../components/styled-dropzone"
 import { useRouter } from "next/router"
 import AppStore from "../stores/app"

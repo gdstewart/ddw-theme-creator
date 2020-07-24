@@ -12,10 +12,10 @@ export default function MyApp({ Component, pageProps }) {
 				<meta property="og:title" content=".ddw Theme Creator" />
 				<meta property="og:description" content="Create .ddw theme files for WinDynamicDesktop." />
 				<meta property="og:type" content="website" />
-				<meta property="og:url" content="" />
+				<meta property="og:url" content="https://ddw-theme-creator.vercel.app/" />
 				<meta property="og:image" content="" />
 				<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-				<link rel="canonical" href="" />
+				<link rel="canonical" href="https://ddw-theme-creator.vercel.app/" />
 			</Head>
 			<Component {...pageProps} />
 		</Layout>
