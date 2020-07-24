@@ -45,7 +45,6 @@ function Home() {
 						</div>
 					</Link>
 				</li>
-				{/*
 				<li className="option hover-fade">
 					<Link as={"/"} href={{ pathname: "/create", query: { option: 3 } }}>
 						<div onClick={() => {
@@ -59,7 +58,6 @@ function Home() {
 						</div>
 					</Link>
 				</li>
-				*/}
 			</ul>
 		</div>
 	)

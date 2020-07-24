@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useRouter } from "next/router"
 import AppStore from "../stores/app"
 import ThemeStore from "../stores/theme"
-import StyledDropzone from "../components/styled-dropzone"
+import ImageDropzone from "./image-dropzone"
 import JSZip from "jszip"
 
 const CreateThemeFromSingleImage = () => {
@@ -42,6 +42,9 @@ const CreateThemeFromSingleImage = () => {
         } else if (themeName.length < 1) {
             setErrorFlag(" visible")
             setErrorText("Please enter a theme name.")
+        } else if (!themeName.match("^[a-zA-Z0-9_]*$")) {
+            setErrorFlag(" visible")
+            setErrorText("Please enter letters, numbers, or underscores only.")
         } else {
             setErrorFlag(" hidden")
             setErrorText("")
@@ -88,7 +91,7 @@ const CreateThemeFromSingleImage = () => {
                         </div>
                     </div>
                 ))}
-                {modifiedImages.length > 0 ? null : <StyledDropzone onDrop={files => createImages(files[0])} />}
+                {modifiedImages.length > 0 ? null : <ImageDropzone onDrop={files => files[0] != null ? createImages(files[0]) : null} />}
             </div>
             <div className="content-block">
                 <input type="text" id="theme-name" name="theme-name" className="content-text-field" placeholder="Name of theme" />

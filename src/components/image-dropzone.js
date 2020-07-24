@@ -3,7 +3,7 @@ import { useDropzone } from "react-dropzone"
 import { IoIosCheckmarkCircle } from "react-icons/io"
 import { MdCancel, MdAdd } from "react-icons/md"
 
-const StyledDropzone = props => {
+const ImageDropzone = props => {
     const baseStyle = {
         flex: 1,
         display: "flex",
@@ -40,7 +40,7 @@ const StyledDropzone = props => {
         isDragAccept,
         isDragReject
     } = useDropzone({
-        accept: "image/*",
+        accept: "image/bmp, image/gif, image/jpeg, image/png, image/tiff",
         multiple: props.multiple ? true : false,
         onDrop: (acceptedFiles) => {
             props.onDrop(acceptedFiles.map(file => Object.assign(file, {
@@ -70,4 +70,4 @@ const StyledDropzone = props => {
     )
 }
 
-export default StyledDropzone
+export default ImageDropzone

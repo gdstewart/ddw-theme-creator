@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { FiSunrise, FiSun, FiSunset, FiMoon } from "react-icons/fi"
 import JSZip from "jszip"
-import StyledDropzone from "../components/styled-dropzone"
+import ImageDropzone from "./image-dropzone"
 import { useRouter } from "next/router"
 import AppStore from "../stores/app"
 import ThemeStore from "../stores/theme"
-import { ReactSortable } from "react-sortablejs";
+import { ReactSortable } from "react-sortablejs"
 
 const CreateThemeFromImageSet = () => {
     const router = useRouter()
@@ -104,7 +104,6 @@ const CreateThemeFromImageSet = () => {
                                 setHoverFlag(" hover-fade-no-pointer")
                                 setDragFlag("")
                             }}
-                            animation={150}
                             ghostClass="thumbnail-placeholder"
                             forceFallback={true}
                         >
@@ -116,7 +115,7 @@ const CreateThemeFromImageSet = () => {
                                 </div>
                             ))}
                         </ReactSortable>
-                        <StyledDropzone multiple onDrop={(files) => {
+                        <ImageDropzone multiple onDrop={(files) => {
                             setImageData(imageData => imageData.concat(files))
                             setSunriseThumbnails(sunriseThumbnails => sunriseThumbnails.concat(files))
                         }} />
@@ -137,7 +136,6 @@ const CreateThemeFromImageSet = () => {
                                 setHoverFlag(" hover-fade-no-pointer")
                                 setDragFlag("")
                             }}
-                            animation={150}
                             ghostClass="thumbnail-placeholder"
                             forceFallback={true}
                         >
@@ -149,7 +147,7 @@ const CreateThemeFromImageSet = () => {
                                 </div>
                             ))}
                         </ReactSortable>
-                        <StyledDropzone multiple onDrop={(files) => {
+                        <ImageDropzone multiple onDrop={(files) => {
                             setImageData(imageData => imageData.concat(files))
                             setDayThumbnails(dayThumbnails => dayThumbnails.concat(files))
                         }} />
@@ -170,7 +168,6 @@ const CreateThemeFromImageSet = () => {
                                 setHoverFlag(" hover-fade-no-pointer")
                                 setDragFlag("")
                             }}
-                            animation={150}
                             ghostClass="thumbnail-placeholder"
                             forceFallback={true}
                         >
@@ -182,7 +179,7 @@ const CreateThemeFromImageSet = () => {
                                 </div>
                             ))}
                         </ReactSortable>
-                        <StyledDropzone multiple onDrop={(files) => {
+                        <ImageDropzone multiple onDrop={(files) => {
                             setImageData(imageData => imageData.concat(files))
                             setSunsetThumbnails(sunsetThumbnails => sunsetThumbnails.concat(files))
                         }} />
@@ -203,7 +200,6 @@ const CreateThemeFromImageSet = () => {
                                 setHoverFlag(" hover-fade-no-pointer")
                                 setDragFlag("")
                             }}
-                            animation={150}
                             ghostClass="thumbnail-placeholder"
                             forceFallback={true}
                         >
@@ -215,7 +211,7 @@ const CreateThemeFromImageSet = () => {
                                 </div>
                             ))}
                         </ReactSortable>
-                        <StyledDropzone multiple onDrop={(files) => {
+                        <ImageDropzone multiple onDrop={(files) => {
                             setImageData(imageData => imageData.concat(files))
                             setNightThumbnails(nightThumbnails => nightThumbnails.concat(files))
                         }} />
