@@ -18,7 +18,7 @@ const HeicDropzone = props => {
         cursor: "pointer",
         marginRight: "1rem",
         marginBottom: "0.5rem",
-        width: 100,
+        width: "calc(100% - 0.5rem * 3)",
         height: 100,
         padding: "0.5rem",
         boxSizing: "border-box"

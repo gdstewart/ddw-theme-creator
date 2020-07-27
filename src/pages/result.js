@@ -21,7 +21,7 @@ function Result() {
     return (
         <div className="result fade-in">
             <IoIosCheckmarkCircle className="result-success-icon" />
-            <div className="result-title">{query.text}</div>
+            <div className="result-title">{"'" + ThemeStore.themeName + "' theme created!"}</div>
             <div className="result-download-link-text hover-fade" onClick={handleDownloadLink}>Click to download .ddw file</div>
             <Link href={"/"}>
                 <div className="result-home-link hover-fade"><IoIosHome className="result-home-button" />Back to home</div>

@@ -1,6 +1,6 @@
 {
 	"name": "ddw-theme-creator",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
@@ -9,7 +9,7 @@
 	},
 	"dependencies": {
 		"file-saver": "^2.0.2",
-		"heic2any": "0.0.3",
+		"heic-convert": "^1.2.2",
 		"jszip": "^3.5.0",
 		"mobx": "^5.15.4",
 		"mobx-react": "^6.2.2",

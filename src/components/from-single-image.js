@@ -26,11 +26,13 @@ const CreateThemeFromSingleImage = () => {
                 ctx.drawImage(image, 0, 0)
                 canvas.toBlob(blob => {
                     let modifiedImage = new File([blob], "placeholder_" + i + ".jpg", { type: "image/jpeg" })
-                    setModifiedImages(modifiedImages => modifiedImages.concat(Object.assign(modifiedImage, { preview: URL.createObjectURL(modifiedImage) })))
+                    Object.assign(modifiedImage, { preview: URL.createObjectURL(modifiedImage) })
+                    setModifiedImages(modifiedImages => modifiedImages.concat(modifiedImage))
                 }, "image/jpeg")
                 brightness -= 8
             }
         }
+        console.log(modifiedImages)
     }
 
     const createTheme = event => {
@@ -68,7 +70,7 @@ const CreateThemeFromSingleImage = () => {
             zip.generateAsync({ type: "blob" }).then(result => {
                 ThemeStore.themeData = result
                 ThemeStore.themeName = themeName
-                router.push("/result?text='" + themeName + "' theme+created!", "/")
+                router.push("/result", "/")
             })
         }
     }
@@ -80,7 +82,8 @@ const CreateThemeFromSingleImage = () => {
                 A theme will be created for you by modifying the brightness of the image. <br />
                 Idea originally implemented by <a className="content-link-text hover-fade" href={"https://github.com/pchalamet"} target="_blank" rel="noopener noreferrer">@pchalamet</a>.
             </div>
-            <div className="thumbnail-container">
+            {modifiedImages.length > 0 ? null : <ImageDropzone onDrop={files => files[0] != null ? createImages(files[0]) : null} />}
+            <div className="thumbnail-container minimize">
                 {modifiedImages.map(file => (
                     <div className="thumbnail" key={file.name}>
                         <div className="thumbnail-inner">
@@ -91,7 +94,6 @@ const CreateThemeFromSingleImage = () => {
                         </div>
                     </div>
                 ))}
-                {modifiedImages.length > 0 ? null : <ImageDropzone onDrop={files => files[0] != null ? createImages(files[0]) : null} />}
             </div>
             <div className="content-block">
                 <input type="text" id="theme-name" name="theme-name" className="content-text-field" placeholder="Name of theme" />

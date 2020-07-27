@@ -16,9 +16,9 @@ const ImageDropzone = props => {
         borderStyle: "dashed",
         outline: "none",
         cursor: "pointer",
-        marginRight: "1rem",
+        marginRight: "0.5rem",
         marginBottom: "0.5rem",
-        width: 100,
+        width: "calc(100% - 0.5rem * 3)",
         height: 100,
         padding: "0.5rem",
         boxSizing: "border-box"

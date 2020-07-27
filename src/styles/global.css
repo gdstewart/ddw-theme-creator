@@ -171,6 +171,11 @@ body {
     padding-bottom: 1rem;
 }
 
+.category-content {
+    display: flex;
+    flex-direction: column;
+}
+
 .dropzone-caption-icon {
     display: flex;
     align-items: center;
@@ -181,11 +186,18 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding-right: 1rem;
     padding-bottom: 0.5rem;
     min-height: calc(100px + 0.5rem);
 }
 
+.minimize {
+    min-height: 0;
+}
 
+.thumbnail-container div {
+    min-width: calc(100px - 0.5rem);
+}
 
 .thumbnail {
     display: inline-flex;
