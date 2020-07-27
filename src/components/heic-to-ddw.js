@@ -6,11 +6,10 @@ import ThemeStore from "../stores/theme"
 import HeicDropzone from "./heic-dropzone"
 import JSZip from "jszip"
 import { ReactSortable } from "react-sortablejs"
-import convert from "heic-convert"
 
 const ConvertHeicToDdw = () => {
     const router = useRouter()
-    const reader = new FileReader()
+    const heic2any = require("heic2any")
 
     const [imageData, setImageData] = useState([])
     const [extractedThumbnails, setExtractedThumbnails] = useState([])
@@ -26,25 +25,18 @@ const ConvertHeicToDdw = () => {
     const extractImages = file => {
         AppStore.loadingMessage = "Extracting images..."
         AppStore.loading = true
-        reader.addEventListener("loadend", () => {
-            let inputBuffer = reader.result
-            convert.all({
-                buffer: Buffer.from(inputBuffer),
-                format: "JPEG"
-            }).then(images => {
-                images.forEach((image, index) => {
-                    image.convert().then(outputBuffer => {
-                        let extractedImage = new File([outputBuffer], "placeholder_" + (index + 1) + ".jpg", { type: "image/jpeg" })
-                        Object.assign(extractedImage, { preview: URL.createObjectURL(extractedImage) })
-                        setImageData(imageData => imageData.concat(extractedImage))
-                        setExtractedThumbnails(extractedThumbnails => extractedThumbnails.concat(extractedImage))
-                        if (index == images.length - 1) AppStore.loading = false
-                    })
-                })
-
-            })
+        heic2any({
+            blob: file,
+            toType: "image/jpeg",
+            multiple: true
+        }).then(images => {
+            AppStore.loading = false
+            let files = images.map(file => Object.assign(file, {
+                preview: URL.createObjectURL(file)
+            }))
+            setImageData(imageData => imageData.concat(files))
+            setExtractedThumbnails(extractedThumbnails => extractedThumbnails.concat(files))
         })
-        reader.readAsArrayBuffer(file)
     }
 
     const createTheme = event => {
