@@ -36,15 +36,17 @@ const ConvertHeicToDdw = () => {
             }))
             setImageData(imageData => imageData.concat(files))
             setExtractedThumbnails(extractedThumbnails => extractedThumbnails.concat(files))
+        }).catch(() => {
+            AppStore.loading = false
         })
     }
 
     const createTheme = event => {
         event.preventDefault()
         let themeName = document.forms["form"]["theme-name"].value
-        if (sunriseThumbnails.length === 0 || dayThumbnails.length === 0 || sunsetThumbnails.length === 0 || nightThumbnails.length === 0) {
+        if (dayThumbnails.length === 0 || nightThumbnails.length === 0) {
             setErrorFlag(" visible")
-            setErrorText("Please drag at least one image into each category.")
+            setErrorText("Please assign at least one day and one night image.")
         } else if (themeName.length < 1) {
             setErrorFlag(" visible")
             setErrorText("Please enter a theme name.")
@@ -57,24 +59,38 @@ const ConvertHeicToDdw = () => {
             let count = 1
             let sunriseImageIndices = [], dayImageIndices = [], sunsetImageIndices = [], nightImageIndices = []
             let zip = new JSZip()
-            sunriseThumbnails.forEach(thumbnail => {
+            if (sunriseThumbnails.length === 0) {
                 sunriseImageIndices.push(count)
-                let data = imageData.find(data => thumbnail.preview === data.preview)
+                let data = imageData.find(data => dayThumbnails[0].preview === data.preview)
                 let file = new File([data], themeName + "_" + count++ + ".jpg", { type: "image/jpeg" })
                 zip.file(file.name, file)
-            })
+            } else {
+                sunriseThumbnails.forEach(thumbnail => {
+                    sunriseImageIndices.push(count)
+                    let data = imageData.find(data => thumbnail.preview === data.preview)
+                    let file = new File([data], themeName + "_" + count++ + ".jpg", { type: "image/jpeg" })
+                    zip.file(file.name, file)
+                })
+            }
             dayThumbnails.forEach(thumbnail => {
                 dayImageIndices.push(count)
                 let data = imageData.find(data => thumbnail.preview === data.preview)
                 let file = new File([data], themeName + "_" + count++ + ".jpg", { type: "image/jpeg" })
                 zip.file(file.name, file)
             })
-            sunsetThumbnails.forEach(thumbnail => {
+            if (sunsetThumbnails.length === 0) {
                 sunsetImageIndices.push(count)
-                let data = imageData.find(data => thumbnail.preview === data.preview)
+                let data = imageData.find(data => nightThumbnails[0].preview === data.preview)
                 let file = new File([data], themeName + "_" + count++ + ".jpg", { type: "image/jpeg" })
                 zip.file(file.name, file)
-            })
+            } else {
+                sunsetThumbnails.forEach(thumbnail => {
+                    sunsetImageIndices.push(count)
+                    let data = imageData.find(data => thumbnail.preview === data.preview)
+                    let file = new File([data], themeName + "_" + count++ + ".jpg", { type: "image/jpeg" })
+                    zip.file(file.name, file)
+                })
+            }
             nightThumbnails.forEach(thumbnail => {
                 nightImageIndices.push(count)
                 let data = imageData.find(data => thumbnail.preview === data.preview)
@@ -105,7 +121,7 @@ const ConvertHeicToDdw = () => {
             <div className="content-block">
                 Drag an .heic file into the dropzone, or click the "+" button. <br />
                 Then drag the extracted images into their proper categories. <br />
-                Not all images must be included, but there has to be at least one in each category.
+                Not all images must be included, but there has to be at least one day image and one night image.
             </div>
             {imageData.length > 0 ? null : <HeicDropzone onDrop={file => file != null ? extractImages(file) : null} />}
             <div className="thumbnail-container minimize">
