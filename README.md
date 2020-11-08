@@ -1,4 +1,4 @@
-# ddw-theme-creator v0.2.1
+# ddw-theme-creator v0.2.2
 WinDynamicDesktop .ddw theme creator
 
 [Click to use!](https://ddw-theme-creator.vercel.app/)
