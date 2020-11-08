@@ -11,17 +11,17 @@
         "file-saver": "^2.0.2",
         "heic2any": "0.0.3",
         "jszip": "^3.5.0",
-        "mobx": "^5.15.4",
-        "mobx-react": "^6.2.3",
+        "mobx": "^5.15.7",
+        "mobx-react": "^6.3.1",
         "next": "9.4.4",
         "react": "16.13.1",
         "react-dom": "16.13.1",
-        "react-dropzone": "^11.0.2",
-        "react-icons": "^3.10.0",
+        "react-dropzone": "^11.2.3",
+        "react-icons": "^3.11.0",
         "react-loader-spinner": "^3.1.14",
-        "react-sortablejs": "^2.0.11"
+        "react-sortablejs": "^2.1.0"
     },
     "devDependencies": {
-        "@babel/plugin-proposal-decorators": "^7.10.5"
+        "@babel/plugin-proposal-decorators": "^7.12.1"
     }
 }
