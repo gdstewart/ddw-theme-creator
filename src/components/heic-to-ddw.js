@@ -20,6 +20,7 @@ const ConvertHeicToDdw = () => {
     const [errorFlag, setErrorFlag] = useState(" hidden")
     const [errorText, setErrorText] = useState("")
     const [hoverFlag, setHoverFlag] = useState(" hover-fade-no-pointer")
+    const [heicErrorFlag, setHeicErrorFlag] = useState(" hidden")
     const [dragFlag, setDragFlag] = useState("")
 
     const extractImages = file => {
@@ -31,6 +32,7 @@ const ConvertHeicToDdw = () => {
             multiple: true
         }).then(images => {
             AppStore.loading = false
+            setHeicErrorFlag(" hidden")
             let files = images.map(file => Object.assign(file, {
                 preview: URL.createObjectURL(file)
             }))
@@ -38,6 +40,7 @@ const ConvertHeicToDdw = () => {
             setExtractedThumbnails(extractedThumbnails => extractedThumbnails.concat(files))
         }).catch(() => {
             AppStore.loading = false
+            setHeicErrorFlag(" visible")
         })
     }
 
@@ -121,9 +124,12 @@ const ConvertHeicToDdw = () => {
             <div className="content-block">
                 Drag an .heic file into the dropzone, or click the "+" button. <br />
                 Then drag the extracted images into their proper categories. <br />
-                Not all images must be included, but there has to be at least one day image and one night image.
+                Not all images must be included, but there must be at least one day image and one night image.
             </div>
             {imageData.length > 0 ? null : <HeicDropzone onDrop={file => file != null ? extractImages(file) : null} />}
+            <div className={"content-block" + heicErrorFlag}>
+                <span className="error-text">Error: There was a problem with the .heic file. Try again or select another file.</span>
+            </div>
             <div className="thumbnail-container minimize">
                 <ReactSortable
                     list={extractedThumbnails}
@@ -273,7 +279,7 @@ const ConvertHeicToDdw = () => {
             </div>
             <div className="content-block row">
                 <input type="submit" value="Create .ddw file" className="content-button" />
-                <span className={"error-text" + errorFlag}>{errorText}</span>
+                <span className={"error-text" + errorFlag}>Error: {errorText}</span>
             </div>
             <div className="spacer" />
         </form>
